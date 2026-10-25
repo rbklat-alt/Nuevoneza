@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio | Nuevo Neza</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+    }
+
+    /* CABECERA */
+    header {
+      background-color: #1a1a1a;
+      padding: 15px 20px;
+      min-height: 85px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: white;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* LOGOTIPO */
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .logo img {
+      display: block;
+      width: 220px;
+      height: 55px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    /* MENÚ DE NAVEGACIÓN */
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #25d366;
+    }
+
+    /* IMAGEN PRINCIPAL DE FONDO */
+    .hero-container {
+      flex: 1;
+      min-height: calc(100vh - 85px);
+      background-image: url("Render Principal.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 30px;
+      padding: 40px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* CAPA OSCURA PARA MEJORAR LA LECTURA */
+    .hero-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.12);
+      z-index: -1;
+    }
+
+    /* BLOQUES DE TEXTO */
+    .columna-texto {
+      flex: 1;
+      max-width: 500px;
+      background: rgba(0, 0, 0, 0.65);
+      color: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .columna-texto h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .columna-texto p {
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    /* BOTÓN FLOTANTE DE WHATSAPP */
+    .btn-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+      transform: scale(1.08);
+    }
+
+    .btn-whatsapp img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+
+    /* TABLETAS Y CELULARES */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+
+      .logo img {
+        width: 200px;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .hero-container {
+        flex-direction: column;
+        justify-content: center;
+        min-height: calc(100vh - 130px);
+        padding: 30px 20px;
+        gap: 20px;
+      }
+
+      .columna-texto {
+        width: 100%;
+        max-width: 500px;
+        padding: 22px;
+      }
+
+      .columna-texto h2 {
+        font-size: 24px;
+      }
+
+      .columna-texto p {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+
+      .hero-container {
+        background-position: center;
+        padding: 20px 15px;
+      }
+
+      .columna-texto {
+        padding: 18px;
+      }
+
+      .columna-texto h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABECERA CON LOGOTIPO -->
+  <header>
+    <a href="Index.html" class="logo" aria-label="Ir al inicio">
+      <img src="logo.jpg" alt="Logotipo de OPEN draft workshop">
+    </a>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="Departamentos.html">Departamentos</a>
+      <a href="Amenidades.html">Amenidades</a>
+      <a href="Contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="hero-container">
+
+    <!-- PRIMER BLOQUE -->
+    <section class="columna-texto">
+      <h2>Nuevo Neza</h2>
+      <p>
+        Un hogar en Nezahualcóyotl diseñado para darte la vivienda
+        digna que mereces, adaptando cada espacio a tus necesidades
+        reales de bienestar y crecimiento.
+      </p>
+    </section>
+
+    <!-- SEGUNDO BLOQUE -->
+    <section class="columna-texto">
+      <h2>Diseño y comodidad</h2>
+      <p>
+        Un desarrollo habitacional contemporáneo que combina
+        arquitectura funcional, iluminación natural y espacios
+        bien distribuidos. Sus acabados modernos, balcones privados
+        y diseño minimalista ofrecen un entorno cómodo, seguro y accesible.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- BOTÓN DE WHATSAPP -->
+  <a
+    href="https://wa.me/5215511324523"
+    class="btn-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp">
+
+    <img src="LogoW.jpg" alt="WhatsApp">
+  </a>
+
+</body>
+</html>

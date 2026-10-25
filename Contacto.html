@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fcfcfc;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* CABECERA */
+    header {
+      background-color: #1a1a1a;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      min-height: 85px;
+      gap: 20px;
+    }
+
+    /* LOGOTIPO */
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      display: block;
+      width: 220px;
+      height: 55px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    /* MENÚ */
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #25d366;
+    }
+
+    /* CONTENIDO PRINCIPAL */
+    .contacto-wrapper {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      gap: 40px;
+    }
+
+    /* INFORMACIÓN DE LA EMPRESA */
+    .info-empresa {
+      flex: 1;
+      background-color: #f4f4f4;
+      padding: 30px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .info-empresa h2 {
+      color: #1a1a1a;
+      font-size: 24px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .info-bloque h3 {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-bloque p {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .info-bloque ul {
+      list-style: none;
+    }
+
+    .info-bloque li {
+      font-size: 15px;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    /* FORMULARIO */
+    .formulario-contenedor {
+      flex: 2;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .formulario-contenedor h2 {
+      font-size: 26px;
+      margin-bottom: 25px;
+      color: #1a1a1a;
+    }
+
+    .form-grupo {
+      margin-bottom: 20px;
+    }
+
+    .form-grupo label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .form-grupo input,
+    .form-grupo textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      font-family: Arial, sans-serif;
+      transition: border-color 0.3s;
+    }
+
+    .form-grupo input:focus,
+    .form-grupo textarea:focus {
+      border-color: #1a1a1a;
+      outline: none;
+    }
+
+    .btn-enviar {
+      background-color: #1a1a1a;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    .btn-enviar:hover {
+      background-color: #333;
+    }
+
+    /* BOTÓN WHATSAPP */
+    .btn-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+
+    .btn-whatsapp img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+
+    /* DISEÑO RESPONSIVO */
+    @media (max-width: 850px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .logo img {
+        width: 200px;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .contacto-wrapper {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .info-empresa,
+      .formulario-contenedor {
+        flex: none;
+        width: 100%;
+      }
+
+      .formulario-contenedor {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .info-empresa,
+      .formulario-contenedor {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABECERA CON LOGO -->
+  <header>
+    <a href="Index.html" class="logo">
+      <img src="logo.jpg" alt="Logo de OPEN draft workshop">
+    </a>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="Departamentos.html">Departamentos</a>
+      <a href="Amenidades.html">Amenidades</a>
+      <a href="Contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="contacto-wrapper">
+
+    <!-- INFORMACIÓN DE LA EMPRESA -->
+    <section class="info-empresa">
+      <h2>Estudio de Arquitectura</h2>
+
+      <div class="info-bloque">
+        <h3>Empresa</h3>
+        <p><strong>OPEN draft workshop</strong></p>
+      </div>
+
+      <div class="info-bloque">
+        <h3>Arquitectos Co-fundadores</h3>
+        <p>
+          Arq. Darío Yiyari Avendaño Martínez<br>
+          Arq. Rebeca López Arce Tule<br>
+          Arq. Jorge Alejandro Roa Hernández
+        </p>
+      </div>
+
+      <div class="info-bloque">
+        <h3>Contacto Directo</h3>
+        <p>
+          📞 +52 1 55 1132 4523<br>
+          ✉️ rbklat@gmail.com
+        </p>
+      </div>
+
+      <div class="info-bloque">
+        <h3>Horarios de Atención</h3>
+        <ul>
+          <li>Lunes a viernes: 9:00 AM - 6:00 PM</li>
+          <li>Sábados: 10:00 AM - 2:00 PM</li>
+          <li>Domingos: Cerrado</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO -->
+    <section class="formulario-contenedor">
+      <h2>Inicia tu Proyecto</h2>
+
+      <form action="https://formspree.io/f/mbggjber" method="POST">
+
+        <div class="form-grupo">
+          <label for="nombre">Nombre Completo:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="Nombre"
+            placeholder="Ej. Juan Pérez"
+            required>
+        </div>
+
+        <div class="form-grupo">
+          <label for="email">Correo Electrónico:</label>
+          <input
+            type="email"
+            id="email"
+            name="Email"
+            placeholder="ejemplo@correo.com"
+            required>
+        </div>
+
+        <div class="form-grupo">
+          <label for="celular">Número de Celular:</label>
+          <input
+            type="tel"
+            id="celular"
+            name="Celular"
+            placeholder="Ej. +52 55 1234 5678"
+            required>
+        </div>
+
+        <div class="form-grupo">
+          <label for="mensaje">Cuéntanos sobre tu idea:</label>
+          <textarea
+            id="mensaje"
+            name="Mensaje"
+            rows="5"
+            placeholder="Escribe aquí los detalles del departamento o servicio que te interesa..."
+            required></textarea>
+        </div>
+
+        <button type="submit" class="btn-enviar">
+          Enviar Información
+        </button>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- BOTÓN WHATSAPP -->
+  <a
+    href="https://wa.me/5215511324523"
+    class="btn-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp">
+
+    <img src="LogoW.jpg" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
+```

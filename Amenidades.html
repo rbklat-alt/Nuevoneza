@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amenidades</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+    }
+
+    /* CABECERA */
+    header {
+      background-color: #1a1a1a;
+      padding: 15px 20px;
+      min-height: 85px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: white;
+    }
+
+    /* LOGOTIPO */
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .logo img {
+      display: block;
+      width: 220px;
+      height: 55px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    /* MENÚ DE NAVEGACIÓN */
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #25d366;
+    }
+
+    /* SECCIÓN 1: ESTACIONAMIENTO */
+    .seccion-estacionamiento {
+      background-color: #f4f4f4;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 2px solid #eaeaea;
+    }
+
+    .estacionamiento-contenido {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .estacionamiento-contenido h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .estacionamiento-contenido p {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* SECCIÓN 2: JARDÍN INTERIOR */
+    .seccion-jardin {
+      min-height: 100vh;
+      padding: 60px 20px;
+      background-color: #fafbf9;
+    }
+
+    .jardin-encabezado {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .jardin-encabezado h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: #2c4c38;
+    }
+
+    .jardin-encabezado p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* CUADRÍCULA DE TARJETAS */
+    .grid-postits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* TARJETAS INTERACTIVAS */
+    .tarjeta-postit {
+      position: relative;
+      height: 400px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    /* TEXTO DETRÁS DE LA FOTOGRAFÍA */
+    .explicacion-contenido {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #fcfaf2;
+      color: #333;
+      overflow-y: auto;
+    }
+
+    .explicacion-contenido h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #2c4c38;
+    }
+
+    .explicacion-contenido p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .explicacion-contenido ul {
+      margin-left: 20px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .explicacion-contenido li {
+      margin-bottom: 10px;
+    }
+
+    /* FOTOGRAFÍAS */
+    .foto-capa {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 2;
+      transition:
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s ease;
+      border-bottom: 5px solid #eaeaea;
+      cursor: pointer;
+    }
+
+    .foto-1 {
+      background-image: url("jardin.jpg");
+    }
+
+    .foto-2 {
+      background-image: url("jardinsup.jpg");
+    }
+
+    .foto-3 {
+      background-image: url("jardin vista.jpg");
+    }
+
+    /* EFECTO DE CORTINA */
+    .tarjeta-postit:hover .foto-capa {
+      transform: translateY(-100%);
+      opacity: 0.95;
+    }
+
+    /* BOTÓN WHATSAPP */
+    .btn-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+      transform: scale(1.08);
+    }
+
+    .btn-whatsapp img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+
+    /* TABLET Y MÓVIL */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .logo img {
+        width: 200px;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .seccion-jardin {
+        padding: 40px 20px;
+      }
+
+      .jardin-encabezado {
+        margin-bottom: 35px;
+      }
+
+      .jardin-encabezado h2 {
+        font-size: 29px;
+      }
+
+      .grid-postits {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        gap: 25px;
+      }
+
+      .tarjeta-postit {
+        height: 380px;
+      }
+
+      /* En móviles, tocar una tarjeta muestra el texto */
+      .tarjeta-postit:active .foto-capa {
+        transform: translateY(-100%);
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .estacionamiento-contenido h2 {
+        font-size: 21px;
+      }
+
+      .jardin-encabezado h2 {
+        font-size: 26px;
+      }
+
+      .tarjeta-postit {
+        height: 400px;
+      }
+
+      .explicacion-contenido {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABECERA CON LOGOTIPO -->
+  <header>
+    <a href="Index.html" class="logo" aria-label="Ir al inicio">
+      <img src="logo.jpg" alt="Logotipo de OPEN draft workshop">
+    </a>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="Departamentos.html">Departamentos</a>
+      <a href="Amenidades.html">Amenidades</a>
+      <a href="Contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- SECCIÓN 1: ESTACIONAMIENTO -->
+    <section class="seccion-estacionamiento">
+      <div class="estacionamiento-contenido">
+        <h2>🚗 Estacionamiento Privado</h2>
+        <p>
+          Espacios amplios, subterráneos y con seguridad controlada
+          las 24 horas para la comodidad de tu vehículo.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: JARDÍN INTERIOR -->
+    <section class="seccion-jardin">
+
+      <div class="jardin-encabezado">
+        <h2>Diseño de Jardín Interior</h2>
+        <p>
+          Pasa el cursor sobre cada fotografía para descubrir los detalles
+          del pulmón verde diseñado exclusivamente para tu bienestar.
+        </p>
+      </div>
+
+      <div class="grid-postits">
+
+        <!-- TARJETA 1: EL PORQUÉ -->
+        <div class="tarjeta-postit">
+          <div class="foto-capa foto-1" role="img" aria-label="Fotografía del jardín interior"></div>
+
+          <div class="explicacion-contenido">
+            <h3>¿Por qué un Jardín Interior?</h3>
+            <p>
+              Buscamos conectar la arquitectura moderna con la naturaleza.
+              Este espacio rompe con el concreto exterior para ofrecer
+              un refugio visual que ayuda a reducir el estrés y aporta
+              frescura al ambiente del edificio.
+            </p>
+          </div>
+        </div>
+
+        <!-- TARJETA 2: EL DISEÑO -->
+        <div class="tarjeta-postit">
+          <div class="foto-capa foto-2" role="img" aria-label="Vista superior del jardín"></div>
+
+          <div class="explicacion-contenido">
+            <h3>¿Cómo se diseñó?</h3>
+            <p>
+              El jardín se integra al centro del conjunto habitacional
+              para favorecer la entrada de luz natural y generar una
+              conexión visual entre los distintos niveles. La vegetación
+              y la distribución del espacio crean un ambiente agradable
+              para los residentes.
+            </p>
+          </div>
+        </div>
+
+        <!-- TARJETA 3: VENTAJAS -->
+        <div class="tarjeta-postit">
+          <div class="foto-capa foto-3" role="img" aria-label="Vista del diseño paisajístico"></div>
+
+          <div class="explicacion-contenido">
+            <h3>Ventajas del Espacio</h3>
+            <ul>
+              <li>
+                <strong>Confort visual:</strong>
+                incorpora vegetación en el entorno cotidiano.
+              </li>
+              <li>
+                <strong>Ambiente agradable:</strong>
+                contribuye a generar una sensación de frescura.
+              </li>
+              <li>
+                <strong>Zona de descanso:</strong>
+                ofrece un espacio visualmente tranquilo para los residentes.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTÓN DE WHATSAPP -->
+  <a
+    href="https://wa.me/5215511324523"
+    class="btn-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp">
+
+    <img src="LogoW.jpg" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
